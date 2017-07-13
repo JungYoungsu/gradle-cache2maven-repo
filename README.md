@@ -10,8 +10,6 @@ Gradle cache folder is located "C:\Users\\{{username}}\\.gradle\caches\modules-2
 3. Jar, pom are separated by folders with random name in Gradle cache, but in Maven repo, they are in one folder.
 
 
-* This code is for Windows. In other OSs, change directory seperator ('\\') in code. 
-
 * with Python 3.6.1, Gradle 4.0.1 
 > \# Before executing, set your gradle cache folder path in code.
 
