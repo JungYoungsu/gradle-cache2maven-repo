@@ -11,4 +11,4 @@ There are three problems with making Maven Repository Folder by Gradle Cache Fol
 3. Jar, pom are separated by folders with random name in Gradle cache, but in Maven repo, they are in one folder
 
 
-** This code is for Windows. In other OSs, should change directory seperator ('\\')
+** This code is for Windows. In other OSs, should change directory seperator ('\\') in code
