@@ -18,7 +18,7 @@ files = searchFiles(path)
 
 for f in files:
 	# Ignore folders with random name
-	# Make folders by spliting dot-delimiter foldername	
+	# Make folders by spliting foldername with dot-delimiter 
 	temp = dirname( dirname(abspath(f)) )[len(path)+1:].split('\\')
 	target = path + '\\' + temp[0].replace('.','\\') + '\\' + '\\'.join(temp[1:])
 	print("File: " + f)
@@ -30,7 +30,7 @@ for f in files:
 	# Delete folders with random name, jar, pom and etc
 	print("Folder Delete: " + dirname(abspath(f)))
 	rmtree( dirname(abspath(f)) )
-	# Delete dot-delimiter folders
+# Delete dot-delimiter folders
 for d in [ join( path, f ) for f in os.listdir(path) if ( (isdir( join(path, f))) & (f.find(".") > -1) )]:
 	print("Folder Delete: " + d)
 	rmtree( d )
