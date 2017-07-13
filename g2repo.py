@@ -9,7 +9,7 @@ def searchFiles(path):
 	files= [ join( path, f ) for f in os.listdir(path) if os.path.isfile( join(path, f)) ]
 	# Extends files from all directory 
 	for d in dirs:
-		file.extend ( searchFiles ( d ) )
+		files.extend ( searchFiles ( d ) )
 	
 	return files
 # file location example) Python- C:\temp\g2repo.py, Target Gradle Cache Folder- C:\temp\repo (will be Maven Repo)
