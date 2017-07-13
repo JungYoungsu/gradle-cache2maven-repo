@@ -1,5 +1,5 @@
 # gradle-cache2maven-repo
-Simple python code for making Maven Repository Folder by Gradle Cache Folder
+Simple python code for making Maven Repository Folder using Gradle Cache Folder
 
 Gradle cache folder is located "C:\Users\\{{username}}\\.gradle\caches\modules-2\files-2.1\" in defalut setting. (in Linux: ~/.gradle/*)
 
