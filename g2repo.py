@@ -1,26 +1,37 @@
 import os
 from os.path import join, dirname, join, isdir, abspath
-from shutil import copyfile, rmtree
+from shutil import copytree, copyfile, rmtree
 
+# directroy separator. Windows: \\ , Linux: /
+separator = os.sep
 
 def searchFiles(path):
 	# files(String List): paths including filename  
 	dirs = [ join( path, f ) for f in os.listdir(path) if isdir( join(path, f)) ]
 	files= [ join( path, f ) for f in os.listdir(path) if os.path.isfile( join(path, f)) ]
-	# Extends files from all directory 
+	# Extends files from all child directory 
 	for d in dirs:
 		files.extend ( searchFiles ( d ) )
 	
 	return files
-# file location example) Python- C:\temp\g2repo.py, Target Gradle Cache Folder- C:\temp\repo (will be Maven Repo)
-path = join( dirname( os.path.realpath(__file__) ), "repo") 
+	
+
+# file location example) 
+# Python Code- C:\temp\g2repo.py, 
+# Target Gradle Cache Folder- C:\temp\cache
+# Maven Repo- C:\temp\cache_repo
+gradle_cache = join( dirname( os.path.realpath(__file__) ), "cache") # Set your own Gradle Cache Folder path
+
+# Maven Repo path
+path = gradle_cache + "_repo"
+copytree(gradle_cache, path)
+
 files = searchFiles(path)
 
 for f in files:
-	# Ignore folders with random name
-	# Make folders by spliting foldername with dot-delimiter 
-	temp = dirname( dirname(abspath(f)) )[len(path)+1:].split('\\')
-	target = path + '\\' + temp[0].replace('.','\\') + '\\' + '\\'.join(temp[1:])
+	# Ignore folders with random name and Make folders by spliting foldername with dot-delimiter 
+	temp = dirname( dirname(abspath(f)) )[len(path)+1:].split(separator)
+	target = path + separator + temp[0].replace('.',separator) + separator + separator.join(temp[1:])
 	print("File: " + f)
 	print("Copy Target: " + target)
 	if not os.path.exists(target):
