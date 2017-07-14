@@ -9,8 +9,8 @@ def searchFiles(path):
 	# fileList(String List): paths including filename 
 	fileList = []
 	for path,pathname,filenames in os.walk(path):
-		for file in filenames:
-			fileList.append( join (path, file) )
+		for f in filenames:
+			fileList.append( join (path, f) )
 	
 	return fileList
 
