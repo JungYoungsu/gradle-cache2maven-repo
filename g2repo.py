@@ -18,9 +18,9 @@ def searchFiles(path):
 
 # file location example) 
 # Python Code- C:\temp\g2repo.py, 
-# Target Gradle Cache Folder- C:\temp\cache
-# Maven Repo- C:\temp\cache_repo
-gradle_cache = join( dirname( os.path.realpath(__file__) ), "cache") # Set your own Gradle Cache Folder path
+# Target Gradle Cache Folder- C:\temp\files-2.1
+# Maven Repo- C:\temp\files-2.1_repo
+gradle_cache = join( dirname( os.path.realpath(__file__) ), "files-2.1") # Set your own Gradle Cache Folder path
 
 # Maven Repo path
 path = gradle_cache + "_repo"
