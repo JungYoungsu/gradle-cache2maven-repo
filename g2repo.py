@@ -6,15 +6,13 @@ from shutil import copytree, move, rmtree
 separator = os.sep
 
 def searchFiles(path):
-	# files(String List): paths including filename  
-	dirs = [ join( path, f ) for f in os.listdir(path) if isdir( join(path, f)) ]
-	files= [ join( path, f ) for f in os.listdir(path) if os.path.isfile( join(path, f)) ]
-	# Extends files from all child directory 
-	for d in dirs:
-		files.extend ( searchFiles ( d ) )
+	# fileList(String List): paths including filename 
+	fileList = []
+	for path,pathname,filenames in os.walk(path):
+		for file in filenames:
+			fileList.append( join (path, file) )
 	
-	return files
-	
+	return fileList
 
 # file location example) 
 # Python Code- C:\temp\g2repo.py, 
