@@ -1,6 +1,6 @@
 import os
 from os.path import join, dirname, join, isdir, abspath
-from shutil import copytree, copyfile, rmtree
+from shutil import copytree, move, rmtree
 
 # directroy separator. Windows: \\ , Linux: /
 separator = os.sep
@@ -36,8 +36,8 @@ for f in files:
 	print("Copy Target: " + target)
 	if not os.path.exists(target):
 		os.makedirs(target)
-	# Copy jar, pom and etc
-	copyfile(f, join(target, os.path.basename(f) ) )
+	# Move jar, pom and etc
+	move(f, join(target, os.path.basename(f) ) )
 	# Delete folders with random name, jar, pom and etc
 	print("Folder Delete: " + dirname(abspath(f)))
 	rmtree( dirname(abspath(f)) )
