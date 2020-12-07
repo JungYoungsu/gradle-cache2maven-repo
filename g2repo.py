@@ -36,9 +36,11 @@ for f in files:
 		os.makedirs(target)
 	# Move jar, pom and etc
 	move(f, join(target, os.path.basename(f) ) )
-	# Delete folders with random name, jar, pom and etc
-	print("Folder Delete: " + dirname(abspath(f)))
-	rmtree( dirname(abspath(f)) )
+    
+	if len([name for name in os.listdir(dirname(abspath(f))) if os.path.isfile(os.path.join(dirname(abspath(f)), name))]) == 0:
+		# Delete cache folders with random name
+		print("Folder Delete: " + dirname(abspath(f)))
+		rmtree( dirname(abspath(f)) )
 # Delete dot-delimiter folders
 for d in [ join( path, f ) for f in os.listdir(path) if ( (isdir( join(path, f))) & (f.find(".") > -1) )]:
 	print("Folder Delete: " + d)
